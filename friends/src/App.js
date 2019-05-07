@@ -24,6 +24,12 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.friends !== prevProps.friends) {
+
+    }
+  }
+
   handleChanges = e => {
     //console.log(e.target.name);
     //console.log(e.target.value);
@@ -40,7 +46,11 @@ class App extends Component {
     //console.log("Submitted!");
     axios 
       .post(`http://localhost:5000/friends`, this.state.newfriend)
-      .then(response => console.log(response))
+      .then(response => this.setState({friends: response.data}))
+      // .then(response => {
+      //       console.log("Inside axios:")
+      //       console.log(this.state.friends)
+      //     })
       .catch(error => console.log(error));
   }
 
@@ -52,22 +62,31 @@ class App extends Component {
 
         <form className="addnewstudentform"
         onSubmit={this.addFriend}>
+        
           <input className="namebox"
           placeholder="Name"
           value={this.state.newfriend.name}
           onChange={this.handleChanges}
           name="name" />
+
           <input className="agebox"
           placeholder="Age"
           value={this.state.newfriend.age}
           onChange={this.handleChanges}
           name="age" 
            />
+
           <input className="emailbox" 
           placeholder="Email"
           value={this.state.newfriend.email}
           onChange={this.handleChanges}
           name="email" />
+
+          <input className="idbox"
+          placeholder="ID -- only for Updating"
+          value={this.state.newfriend.id}
+          name="id"/>
+
           <button className="submitbtn">Submit</button>
         </form>
 

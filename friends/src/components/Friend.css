@@ -14,7 +14,7 @@
     background: lightcyan;
     width: 400px;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -35,6 +35,13 @@
 }
 
 .friend-age {
+    align-self: center;
+    margin-left: auto;
     font-size: 20px;
+    margin-right: auto;
+}
+
+.friend-email {
     margin-right: 10px;
+    align-self: flex-end;
 }
