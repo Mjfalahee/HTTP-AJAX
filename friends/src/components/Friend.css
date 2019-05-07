@@ -1,0 +1,40 @@
+.list-container {
+    border-radius: 5px;
+    background: lightblue;
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.friend {
+    background: lightcyan;
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.friend:nth-child(1) {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.friend:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.friend-name {
+    font-size: 25px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.friend-age {
+    font-size: 20px;
+    margin-right: 10px;
+}
