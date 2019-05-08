@@ -9,7 +9,13 @@ function FriendList(props) {
     //console.log(props);
     return (
         <div className="list-container">
-        {props.friends.map(friend => <Friend friend={friend} key={friend.id} />)}
+        {props.friends.map(friend => 
+        <Friend 
+        friend={friend} 
+        key={friend.id} 
+        updateFriend={props.updateFriend}
+        deleteFriend={props.deleteFriend}
+        setActiveFriend={props.setActiveFriend}/>)}
         </div>
         // <NewFriend />
     );

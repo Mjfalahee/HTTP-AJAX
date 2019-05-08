@@ -1,7 +1,7 @@
 .list-container {
     border-radius: 5px;
     background: lightblue;
-    width: 600px;
+    width: 800px;
     margin: 0 auto;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -12,7 +12,7 @@
 
 .friend {
     background: lightcyan;
-    width: 400px;
+    width: 700px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -44,4 +44,48 @@
 .friend-email {
     margin-right: 10px;
     align-self: flex-end;
+}
+
+.addnewstudentform {
+    margin: 0 auto;
+    height: 200px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addnewstudentform input {
+    width: 200px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.addnewstudentform button {
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: lightblue;
+}
+
+.updatestudentform {
+    margin: 0 auto;
+    height: 200px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.updatestudentform input {
+    width: 200px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.updatestudentform button {
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: lightblue;
 }

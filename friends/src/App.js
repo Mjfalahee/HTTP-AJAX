@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import FriendList from './components/FriendList';
+import AddItemForm from './components/AddItemForm';
+import UpdateFriendForm from './components/UpdateFriendForm';
 import './App.css';
 
 class App extends Component {
@@ -9,86 +11,76 @@ class App extends Component {
     super(props);
     this.state = {
       friends: [],
-      newfriend: {
-        name: '',
-        age: '',
-        email: ''
-      }
+      activefriend: {},
     }
   }
 
   componentDidMount() {
     axios
       .get(`http://localhost:5000/friends`)
-      .then(response => this.setState({friends: response.data}))
+      .then(response => {
+        this.setState({friends: response.data})
+        console.log(response.data);
+      })
       .catch(error => console.log(error))
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.friends !== prevProps.friends) {
-
-    }
-  }
-
-  handleChanges = e => {
-    //console.log(e.target.name);
-    //console.log(e.target.value);
-    this.setState({
-      newfriend: {
-        ...this.state.newfriend,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
-
-  addFriend = e => {
+  //adds new friend
+  
+  addFriend = (e, newFriend) => {
     e.preventDefault();
     //console.log("Submitted!");
     axios 
-      .post(`http://localhost:5000/friends`, this.state.newfriend)
+      .post(`http://localhost:5000/friends`, newFriend)
       .then(response => this.setState({friends: response.data}))
-      // .then(response => {
-      //       console.log("Inside axios:")
-      //       console.log(this.state.friends)
-      //     })
+      .then(res => console.log(res))
       .catch(error => console.log(error));
+  }
+
+  //updates a friend's info
+
+  updateFriend = (e, updatedFriend) => {
+    console.log("UPDATE!");
+    console.log(updatedFriend);
+    axios
+     .put(`http://localhost:5000/friends/${this.state.activefriend.id}`, updatedFriend)
+     .then(res => {
+        this.setState({friends: res.data})
+        console.log("Updated Friend: ")
+        console.log(res.data);
+      })
+    .catch(err => console.log(err))
+  }
+  
+  // deletes a friend's info
+
+  deleteFriend = () => {
+    // will delete
+  }
+
+  // set active Friend
+
+  setActiveFriend = (thing) => {
+    console.log("PREUPDATE STATE: ")
+    console.log(thing);
+    this.setState({activefriend: thing})
+    console.log("ACTIVE?");
+    console.log(this.state.activefriend);
   }
 
   render() {
     return (
       <div className="App">
-        <FriendList friends={this.state.friends} />
-
-
-        <form className="addnewstudentform"
-        onSubmit={this.addFriend}>
-        
-          <input className="namebox"
-          placeholder="Name"
-          value={this.state.newfriend.name}
-          onChange={this.handleChanges}
-          name="name" />
-
-          <input className="agebox"
-          placeholder="Age"
-          value={this.state.newfriend.age}
-          onChange={this.handleChanges}
-          name="age" 
-           />
-
-          <input className="emailbox" 
-          placeholder="Email"
-          value={this.state.newfriend.email}
-          onChange={this.handleChanges}
-          name="email" />
-
-          <input className="idbox"
-          placeholder="ID -- only for Updating"
-          value={this.state.newfriend.id}
-          name="id"/>
-
-          <button className="submitbtn">Submit</button>
-        </form>
+        <FriendList friends={this.state.friends} 
+        updateFriend={this.updateFriend} 
+        deleteFriend={this.deleteFriend}
+        setActiveFriend={this.setActiveFriend}
+        />
+        <AddItemForm 
+        AddFriend={this.addFriend}/>
+        <UpdateFriendForm 
+        updateActive={this.state.activefriend}
+        updateFriend={this.updateFriend}/>
 
       </div>
       );
