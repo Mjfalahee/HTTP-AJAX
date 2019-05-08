@@ -14,7 +14,7 @@ function Friend(props) {
     const deleteHandle = e => {
         e.preventDefault();
         props.setActiveFriend(props.friend);
-        props.deleteFriend();
+        props.deleteFriend(props.friend.id);
     }
 
     return (
@@ -23,7 +23,7 @@ function Friend(props) {
             <h4 className="friend-age">{props.friend.age}</h4>
             <p className="friend-email">{props.friend.email}</p>
 
-            <button onClick={(e) => updateHandle(e)} className="update-btn">Update</button>
+            <button onClick={e => updateHandle(e)} className="update-btn">Update</button>
             <button onClick={e => deleteHandle(e)} className="delete-btn">Delete</button>
         </div>
     );

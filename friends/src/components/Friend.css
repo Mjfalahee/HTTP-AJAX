@@ -46,6 +46,10 @@
     align-self: flex-end;
 }
 
+.friend button {
+    margin: 10px;
+}
+
 .addnewstudentform {
     margin: 0 auto;
     height: 200px;

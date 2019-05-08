@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 import FriendList from './components/FriendList';
 import AddItemForm from './components/AddItemForm';
 import UpdateFriendForm from './components/UpdateFriendForm';
@@ -20,7 +20,7 @@ class App extends Component {
       .get(`http://localhost:5000/friends`)
       .then(response => {
         this.setState({friends: response.data})
-        console.log(response.data);
+        //console.log(response.data);
       })
       .catch(error => console.log(error))
   }
@@ -53,11 +53,10 @@ class App extends Component {
   }
   
   // deletes a friend's info
-
-  deleteFriend = () => {
+  deleteFriend = (target) => {
     console.log("DELETE!");
     axios
-      .delete(`http://localhost:5000/friends/${this.state.activefriend.id}`)
+      .delete(`http://localhost:5000/friends/${target}`)
       .then(res => {
         this.setState({friends: res.data})
       })
@@ -67,7 +66,7 @@ class App extends Component {
   // set active Friend
 
   setActiveFriend = (thing) => {
-    console.log("PREUPDATE STATE: ")
+    console.log("Before set state object: ")
     console.log(thing);
     this.setState({activefriend: thing})
     console.log("ACTIVE?");
