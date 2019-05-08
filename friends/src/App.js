@@ -55,7 +55,13 @@ class App extends Component {
   // deletes a friend's info
 
   deleteFriend = () => {
-    // will delete
+    console.log("DELETE!");
+    axios
+      .delete(`http://localhost:5000/friends/${this.state.activefriend.id}`)
+      .then(res => {
+        this.setState({friends: res.data})
+      })
+      .catch(err => console.log(err))
   }
 
   // set active Friend
