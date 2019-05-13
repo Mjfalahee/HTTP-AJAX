@@ -1,0 +1,95 @@
+.list-container {
+    border-radius: 5px;
+    background: lightblue;
+    width: 800px;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.friend {
+    background: lightcyan;
+    width: 700px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.friend:nth-child(1) {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.friend:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.friend-name {
+    font-size: 25px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.friend-age {
+    align-self: center;
+    margin-left: auto;
+    font-size: 20px;
+    margin-right: auto;
+}
+
+.friend-email {
+    margin-right: 10px;
+    align-self: flex-end;
+}
+
+.friend button {
+    margin: 10px;
+}
+
+.addnewstudentform {
+    margin: 0 auto;
+    height: 200px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addnewstudentform input {
+    width: 200px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.addnewstudentform button {
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: lightblue;
+}
+
+.updatestudentform {
+    margin: 0 auto;
+    height: 200px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.updatestudentform input {
+    width: 200px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.updatestudentform button {
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: lightblue;
+}
